@@ -1,0 +1,24 @@
+Hello, {{ first_name|safe }}!
+
+Just wanted to let you know, we received your general query submission.
+
+A copy of your query is included below for your records.
+
+Thank you, we appreciate your interest and feedback.
+
+
+{{ site_name }}
+
+======================================================
+
+Contact details
+---------------------------------------
+First name: {{ first_name|safe }}
+Last name: {{ last_name|safe }}
+Email: {{ email }}
+
+Message
+---------------------------------------
+Subject: {{ subject|safe }}
+
+{{ message|safe }}

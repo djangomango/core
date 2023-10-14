@@ -1,0 +1,5 @@
+<script>
+    grecaptcha.ready(function () {
+        {% include "core/recaptcha/recaptcha_execute.html" with public_key=public_key action_name=action_name %}
+    });
+</script>

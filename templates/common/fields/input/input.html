@@ -1,0 +1,11 @@
+<input
+    id="{{ field.auto_id }}"
+    name="{{ field.html_name }}"
+    type="{{ field.field.widget.input_type|default_if_none:'text' }}"
+    class="{% if field.field.disabled or field.field.widget.attrs.disabled or field.field.widget.attrs.readonly %}cursor-not-allowed{% endif %} border-1 focus:ring-primary-500 focus:border-primary-600 peer block w-full rounded-lg border-gray-300 bg-white text-sm text-gray-900 {{ extra_inputstyles }}"
+    value="{{ field.value|default_if_none:'' }}"
+    placeholder="{{ field.value|default_if_none:'' }}"
+    {% if field.field.required %}required{% endif %}
+    {% if field.field.disabled %}disabled{% endif %}
+    {% include 'common/fields/attrs.html' %} />
+

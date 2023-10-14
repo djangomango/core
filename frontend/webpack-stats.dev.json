@@ -1,0 +1,32 @@
+{
+  "status": "done",
+  "assets": {
+    "css/app.css": {
+      "name": "css/app.css",
+      "path": "/usr/src/app/staticfiles/build/css/app.css",
+      "publicPath": "/static/build/css/app.css"
+    },
+    "img/logo/dm-logo-full-100h.png": {
+      "name": "img/logo/dm-logo-full-100h.png",
+      "path": "/usr/src/app/staticfiles/build/img/logo/dm-logo-full-100h.png",
+      "publicPath": "/static/build/img/logo/dm-logo-full-100h.png"
+    },
+    "img/logo/dm-logo-icon-100h.png": {
+      "name": "img/logo/dm-logo-icon-100h.png",
+      "path": "/usr/src/app/staticfiles/build/img/logo/dm-logo-icon-100h.png",
+      "publicPath": "/static/build/img/logo/dm-logo-icon-100h.png"
+    },
+    "js/app.js": {
+      "name": "js/app.js",
+      "path": "/usr/src/app/staticfiles/build/js/app.js",
+      "publicPath": "/static/build/js/app.js"
+    }
+  },
+  "chunks": {
+    "app": [
+      "css/app.css",
+      "js/app.js"
+    ]
+  },
+  "publicPath": "/static/build/"
+}

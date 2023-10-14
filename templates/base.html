@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+<html class="min-h-screen {% block html_class %}{% endblock html_class %}" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="{% block page_description %}{% endblock page_description %}"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+
+  {% block extra_meta %}{% endblock extra_meta %}
+
+  <title>
+    {% block site_title %}{{ site_config.site.name }}{% endblock site_title %}
+  </title>
+
+  <link href="{% static '/img/logo/dm-logo-icon-20h.ico' %}" rel="icon" type="image/x-icon"/>
+
+  {% render_bundle 'app' 'css' %}
+
+  {% block extra_styles %}{% endblock extra_styles %}
+
+  {% render_bundle 'app' 'js' %}
+
+  {% block extra_head_scripts %}{% endblock extra_head_scripts %}
+</head>
+
+<body class="min-h-screen {% block body_class %}{% endblock body_class %}">
+{% block site %}
+
+  {% block header %}{% endblock header %}
+
+  {% block main %}
+    <main class="mt-[62px] md:mt-[72px] lg:mt-[82px]">
+      {% include 'common/components/messages.html' %}
+      {% block content %}{% endblock content %}
+    </main>
+  {% endblock main %}
+
+  {% block footer %}{% endblock footer %}
+
+{% endblock site %}
+
+{% block extra_body_scripts %}{% endblock extra_body_scripts %}
+</body>
+</html>

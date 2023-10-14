@@ -1,0 +1,13 @@
+{% extends 'common/modals/base.html' %}
+
+{% block modal_id %}general-query-modal{% endblock %}
+
+{% block modal_title %}Thank you for your query{% endblock modal_title %}
+
+{% block dismiss_url %}{{ url }}{% endblock dismiss_url %}
+
+{% block modal_content %}
+  <p class="response-message text-base leading-relaxed text-gray-500"></p>
+{% endblock modal_content %}
+
+{% block accept_url %}{{ url }}{% endblock accept_url %}

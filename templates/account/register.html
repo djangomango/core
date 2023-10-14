@@ -1,0 +1,41 @@
+{% extends 'account/base.html' %}
+{% load recaptcha %}
+
+{% block extra_head_scripts %}
+  {% if config_google_recaptcha.is_active %}
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='register' %}
+  {% endif %}
+{% endblock extra_head_scripts %}
+
+{% block form_title %}Create an account{% endblock form_title %}
+
+{% block form %}
+  <form id="account-register-form" name="register-form" method="POST" action="{{ request.path }}" class="needs-validation grid grid-cols-1 gap-y-6" novalidate>
+    {% csrf_token %}
+    <input name="response-handler" value="form" type="hidden"/>
+    <input name="response-container" value="register-form" type="hidden"/>
+    <div class="response-message" tabindex="0"></div>
+    {% if config_google_recaptcha.is_active %}
+      {{ register_form.captcha }}
+    {% endif %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=register_form.first_name type='text' %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=register_form.last_name type='text' %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=register_form.username type='text' %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=register_form.email type='email' %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=register_form.password1 type='text' %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=register_form.password2 type='text' %}
+    <div class="mt-2">
+      {% include 'common/fields/checkbox/checkbox-label.html' with field=register_form.subscribe %}
+    </div>
+    <div class="text-sm font-light text-gray-500">
+      By clicking <em>Sign-up</em> you agree to our
+      <a href="{% url 'page:legal' %}" class="text-primary-600 font-medium hover:underline">terms and conditions</a>.
+    </div>
+    {% include 'common/components/button.html' with type='submit' color='primary' extra_class='text-sm font-medium w-full px-5 py-2.5' form_submit='account-register-form' label='Sign-up' %}
+    <p class="text-sm font-light text-gray-500">
+      Already have an account?
+      <a href="{% url 'account:login' %}" class="text-primary-600 font-medium hover:underline">Login</a>
+    </p>
+  </form>
+{% endblock form %}

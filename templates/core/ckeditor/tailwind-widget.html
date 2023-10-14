@@ -1,0 +1,13 @@
+{% load static %}
+
+<div id="{{ widget.attrs.id }}_ckwidget" class="ckwidget-container w-full ck-valid group" data-field-id="{{ widget.attrs.id }}" style="display: inline-block;">
+  <label for="{{ widget.auto_id }}" class="block text-sm font-medium text-gray-700 mb-4 {{ extra_labelstyles }}">{{ widget.attrs.label|default_if_none:'' }}</label>
+  <div class="border border-1 was-validated:group-[.ck-valid]:border-green-600 was-validated:group-[.ck-invalid]:border-red-600">
+    <textarea name="{{ widget.name }}" {% if widget.required == True %}data-required="true"{% endif %}
+        {% include "django/forms/widgets/attrs.html" %} data-processed="0" data-config="{{ widget.config }}" data-external-plugin-resources="{{ widget.external_plugin_resources }}" data-id="{{ widget.attrs.id }}" data-type="ckeditortype">{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+  </div>
+  <p class="was-validated:group-[.ck-valid]:block absolute mt-1 hidden text-xs text-green-600">
+    Looks good! </p>
+  <p class="was-validated:group-[.ck-invalid]:block absolute mt-1 hidden text-xs text-red-600">
+    {{ widget.attrs.help_text }} </p>
+</div>

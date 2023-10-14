@@ -1,0 +1,42 @@
+{% load heroicons %}
+{% load all_spaceless %}
+
+{% block messages %}
+  {% if messages %}
+    <div class="z-10 w-full">
+      {% for item in messages %}
+        <div id="alert-{{ forloop.counter }}" class="flex rounded-lg mb-4 p-4 {% if item.tags == "success" %}bg-green-100{% elif item.tags == "error" %}bg-red-100{% elif item.tags == "warning" %}bg-yellow-100{% else %}bg-blue-100{% endif %}" role="alert">
+          {% if item.tags == "success" %}
+            {% heroicon_mini 'information-circle' size=20 class='flex-shrink-0 text-green-700' %}
+          {% elif item.tags == "error" %}
+            {% heroicon_mini 'information-circle' size=20 class='flex-shrink-0 text-red-700' %}
+          {% elif item.tags == "warning" %}
+            {% heroicon_mini 'information-circle' size=20 class='flex-shrink-0 text-yellow-700' %}
+          {% else %}
+            {% heroicon_mini 'information-circle' size=20 class='flex-shrink-0 text-blue-700' %}
+          {% endif %}
+          <span class="sr-only">Info</span>
+          <div class="ml-3 text-sm font-medium {% if item.tags == "success" %}text-green-700{% elif item.tags == "error" %}text-red-700{% elif item.tags == "warning" %}text-yellow-700{% else %}text-blue-700{% endif %}">{{ item|safe }}</div>
+          <button type="button"
+              {% all_spaceless %}
+                class="-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2
+                {% if item.tags == "success" %}
+                  bg-green-100 text-green-500 hover:bg-green-200 focus:ring-green-400
+                {% elif item.tags == "error" %}
+                  bg-red-100 text-red-500 hover:bg-red-200 focus:ring-red-400
+                {% elif item.tags == "warning" %}
+                  bg-yellow-100 text-yellow-500 hover:bg-yellow-200 focus:ring-yellow-400
+                {% else %}
+                  bg-blue-100 text-blue-500 hover:bg-blue-200 focus:ring-blue-400
+                {% endif %}"
+              {% end_all_spaceless %}
+              data-dismiss-target="#alert-{{ forloop.counter }}" aria-label="Close">
+            <span class="sr-only">Close</span>
+            {% heroicon_outline 'x-mark' stroke_width=2 size=20 %}
+          </button>
+        </div>
+      {% endfor %}
+      {% block extra_message %}{% endblock extra_message %}
+    </div>
+  {% endif %}
+{% endblock messages %}

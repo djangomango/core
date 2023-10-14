@@ -1,0 +1,12 @@
+FROM node:19.8-alpine
+
+RUN mkdir -p /usr/src/app
+
+COPY frontend /usr/src/app/frontend
+COPY templates /usr/src/app/templates
+
+WORKDIR /usr/src/app/frontend
+
+RUN npm install
+
+RUN npm install --global webpack webpack-cli webpack-dev-server

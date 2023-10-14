@@ -1,0 +1,38 @@
+<extends src="src/emails/layouts/main.html">
+  <block name="template">
+    <table class="email-wrapper w-full bg-gray-postmark-lighter font-sans">
+      <tr>
+        <td align="center">
+          <table class="email-content w-full">
+            <component src="src/emails/components/header.html"></component>
+            <tr>
+              <td class="email-body w-full">
+                <table align="center" class="email-body_inner w-[570px] bg-white mx-auto sm:w-full">
+                  <tr>
+                    <td class="p-[45px]">
+                      <div class="text-base">
+                        <h1 class="mt-0 text-2xl font-bold text-left text-gray-postmark-darker">
+                          Hello, {{ first_name }}!
+                        </h1>
+                        <p class="mt-2 text-base leading-6 text-gray-postmark-dark">
+                          Just wanted to confirm that you have successfully created a new {{ site_name }} account.
+                        </p>
+                        <p class="mt-2 text-base leading-6 text-gray-postmark-dark">
+                          Thank you for your interest and support.
+                        </p>
+                        <p class="mt-6 text-base leading-6 text-gray-postmark-dark">
+                          {{ site_name }}
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <component src="src/emails/components/footer.html"></component>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>

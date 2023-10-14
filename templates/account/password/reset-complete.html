@@ -1,0 +1,11 @@
+{% extends 'account/login.html' %}
+
+{% block form_title %}New password set{% endblock form_title %}
+
+{% block form %}
+  <p class="mt-6 mb-8 text-center font-light text-gray-500">
+    Your password has been set. You may go ahead and log in. </p>
+  <a href="{% url 'account:login' %}">
+    {% include 'common/components/button.html' with type='button' color='primary' extra_class='text-sm font-medium w-full px-5 py-2.5' label='Login' %}
+  </a>
+{% endblock form %}

@@ -1,0 +1,8 @@
+Hello, {{ first_name|safe }}!
+
+Just wanted to let you know, we received your account deletion request.
+
+Should you wish to restore your account, please contact us asap.
+
+
+{{ site_name }}

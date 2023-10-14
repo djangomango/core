@@ -1,0 +1,19 @@
+Hello, {{ first_name }}!
+
+Just wanted to let you know, we received a request to change your profile email address.
+
+A copy of your request is included below for your records.
+
+Please contact us immediately if you didn't request this change.
+
+
+{{ site_name }}
+
+======================================================
+
+Profile details
+---------------------------------------
+Username: {{ username }}
+First name: {{ first_name }}
+Last name: {{ last_name }}
+Email: {{ email }}

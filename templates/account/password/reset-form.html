@@ -1,0 +1,39 @@
+{% extends 'account/login.html' %}
+
+{% block form_title %}Reset password?{% endblock form_title %}
+
+{% block form %}
+  <form id="password-reset-form" name="password-reset-form" method="POST" class="space-y-4 md:space-y-6">
+
+    {% csrf_token %}
+
+    {% if form.errors %}
+      {% for field in form %}
+        {% for error in field.errors %}
+          {% with field.name|add:': '|add:error as message %}
+            {% include 'common/components/alert-dismissable.html' with message=message tag='error' %}
+          {% endwith %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        {% include 'common/components/alert-dismissable.html' with message=error tag='error' %}
+      {% endfor %}
+    {% endif %}
+
+    <p class="font-light text-gray-500">
+      We need to send an email with instructions to reset your password. If you can't remember the email address
+      you registered with, please get in touch via our
+      <a href="{% url 'page:contact' %}" class="text-primary-600 font-medium hover:underline">contact page</a>. </p>
+
+    {% include 'common/fields/input/input-floating-label.html' with field=form.email %}
+    {% include 'common/components/button.html' with type='submit' color='primary' extra_class='text-sm font-medium w-full px-5 py-2.5' form_submit='password-reset-form' label='Send reset email' %}
+
+    <p class="font-light text-gray-500 text-sm text-center">
+      Otherwise, if you remember your password, please
+      <a href="{% url 'account:login' %}" class="text-primary-600 font-medium hover:underline">log in</a>. </p>
+
+  </form>
+{% endblock form %}

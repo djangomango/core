@@ -1,0 +1,32 @@
+{% extends 'account/base.html' %}
+{% load recaptcha %}
+
+{% block extra_head_scripts %}
+  {% if config_google_recaptcha.is_active %}
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='login' %}
+  {% endif %}
+{% endblock extra_head_scripts %}
+
+{% block form_title %}Sign in to your account{% endblock form_title %}
+
+{% block form %}
+  <form id="account-login-form" name="account-login-form" method="POST" action="{{ request.path }}" class="needs-validation space-y-6 md:space-y-8" novalidate>
+    {% csrf_token %}
+    <input name="response-handler" value="form" type="hidden">
+    <input name="response-container" value="account-login-form" type="hidden"/>
+    <div class="response-message" tabindex="0"></div>
+    {% if config_google_recaptcha.is_active %}{{ login_form.captcha }}{% endif %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=login_form.username %}
+    {% include 'common/fields/input/input-floating-label-validated.html' with field=login_form.password %}
+    <div class="flex items-center justify-between mt-2">
+      {% include 'common/fields/checkbox/checkbox-label.html' with field=login_form.remember %}
+      <a href="{% url 'account:password_reset' %}" class="text-primary-600 text-sm font-medium hover:underline">Forgot password?</a>
+    </div>
+    {% include 'common/components/button.html' with type='submit' color='primary' extra_class='text-sm font-medium w-full px-5 py-2.5' form_submit='account-login-form' label='Sign in' %}
+    <p class="font-light text-gray-500 text-sm text-center">
+      Don’t have an account yet?
+      <a href="{% url 'account:register' %}" class="text-primary-600 font-medium hover:underline">Sign-up</a>
+    </p>
+  </form>
+{% endblock form %}

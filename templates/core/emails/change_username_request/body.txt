@@ -1,0 +1,19 @@
+Hello, {{ first_name|safe }}!
+
+Just wanted to let you know, we received a request to change your username.
+
+A copy of your request is included below for your records.
+
+Please contact us immediately if you didn't request this change.
+
+
+{{ site_name }}
+
+======================================================
+
+Profile details
+---------------------------------------
+Username: {{ username|safe }}
+First name: {{ first_name|safe }}
+Last name: {{ last_name|safe }}
+Email: {{ email }}

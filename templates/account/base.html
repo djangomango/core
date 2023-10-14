@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+<html class="min-h-screen bg-gray-50 {% block html_class %}{% endblock html_class %}" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="{% block page_description %}{% endblock page_description %}"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+
+  {% block extra_meta %}{% endblock extra_meta %}
+
+  <title>
+    {% block site_title %}{{ common_config.site.name }}{% endblock site_title %}
+  </title>
+
+  <link href="{% static '/img/logo/dm-logo-icon-20h.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+  {% render_bundle 'app' 'css' %}
+
+  {% block extra_styles %}{% endblock extra_styles %}
+
+  {% render_bundle 'app' 'js' %}
+
+  {% block extra_head_scripts %}{% endblock extra_head_scripts %}
+</head>
+
+<body class="min-h-screen {% block body_class %}{% endblock body_class %}">
+{% block site %}
+  <main class="min-h-screen">
+    <div class="flex min-h-screen flex-col items-center justify-center px-6 py-8">
+      <div class="w-full rounded-lg bg-white shadow sm:max-w-lg md:mt-0 xl:p-0">
+        <div class="p-6 sm:p-8">
+          <a href="{% url 'page:index' %}" class="mb-6 flex items-center">
+            <div class="navbar-brand mx-auto"></div>
+          </a>
+          <h1 class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl mb-4">
+            {% block form_title %}{% endblock form_title %}
+          </h1>
+          {% block form %}{% endblock form %}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock site %}
+
+{% block extra_body_scripts %}{% endblock extra_body_scripts %}
+</body>
+</html>

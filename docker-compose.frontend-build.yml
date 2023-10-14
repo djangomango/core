@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    node:
+        build:
+            context: .
+            dockerfile: docker/node/Dockerfile.node
+        container_name: dm-frontend-build
+        environment:
+            - NODE_ENV=prod
+        volumes:
+            - ./frontend:/usr/src/app/frontend
+            - ./static:/usr/src/app/static
+            - static_volume:/usr/src/app/staticfiles
+            - node_modules:/usr/src/app/frontend/node_modules
+        ports:
+            - "3000:3000"
+
+volumes:
+    static_volume:
+    node_modules:

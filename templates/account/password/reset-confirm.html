@@ -1,0 +1,49 @@
+{% extends 'account/login.html' %}
+
+{% block form_title %}Reset your password{% endblock form_title %}
+
+{% block form %}
+  <form id="password-reset-confirm" name="password-reset-confirm" method="POST" class="space-y-4 md:space-y-6">
+    {% if validlink %}
+
+      {% csrf_token %}
+
+      {% if form.errors %}
+        {% for field in form %}
+          {% for error in field.errors %}
+            {% with field.name|add:': '|add:error as message %}
+              {% include 'common/components/alert-dismissable.html' with message=message tag='error' %}
+            {% endwith %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          {% include 'common/components/alert-dismissable.html' with message=error tag='error' %}
+        {% endfor %}
+      {% endif %}
+
+      <ul class="list-inside list-none text-sm font-light text-gray-500">
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+
+      {% include 'common/fields/input/input-floating-label.html' with field=form.new_password1 %}
+      {% include 'common/fields/input/input-floating-label.html' with field=form.new_password2 %}
+      {% include 'common/components/button.html' with type='submit' color='primary' extra_class='text-sm font-medium w-full px-5 py-2.5' form_submit='password-reset-confirm' label='Change my password' %}
+
+      <p class="text-center text-sm font-light text-gray-500">
+        Otherwise, if you remember your password, please
+        <a href="{% url 'account:login' %}" class="text-primary-600 font-medium hover:underline">log in</a>. </p>
+
+    {% else %}
+      <p class="mt-6 mb-8 text-center font-light text-gray-500">
+        The password reset link was invalid, possibly because it has already been used. Please request a
+        new password reset. </p>
+
+    {% endif %}
+  </form>
+{% endblock form %}

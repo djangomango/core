@@ -1,0 +1,14 @@
+{% extends 'account/login.html' %}
+
+{% block form_title %}Password reset sent{% endblock form_title %}
+
+{% block form %}
+  <div class="font-light text-gray-500">
+    <p class="mt-6 mb-8">
+      We’ve emailed instructions for setting your password to the provided address. If you
+      don't receive an email, please check your spam folder. </p>
+    <p class="text-sm text-center">
+      In the meantime, feel free to
+      <a href="{% url 'page:index' %}" class="text-primary-600 font-medium hover:underline">browse the site</a>. </p>
+  </div>
+{% endblock form %}

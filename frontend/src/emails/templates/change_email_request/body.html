@@ -1,0 +1,78 @@
+<extends src="src/emails/layouts/main.html">
+  <block name="template">
+    <table class="email-wrapper w-full bg-gray-postmark-lighter font-sans">
+      <tr>
+        <td align="center">
+          <table class="email-content w-full">
+            <component src="src/emails/components/header.html"></component>
+            <tr>
+              <td class="email-body w-full">
+                <table align="center" class="email-body_inner w-[570px] bg-white mx-auto sm:w-full">
+                  <tr>
+                    <td class="p-[45px]">
+                      <div class="text-base">
+                        <h1 class="mt-0 text-2xl font-bold text-left text-gray-postmark-darker">
+                          Hello, {{ first_name }}!
+                        </h1>
+                        <p class="mt-2 text-base leading-6 text-gray-postmark-dark">
+                          Just wanted to let you know, we received a request to change your profile email address.
+                        </p>
+                        <p class="mt-2 text-base leading-6 text-gray-postmark-dark">
+                          A copy of your request is included below for your records.
+                        </p>
+                        <p class="mt-2 text-base leading-6 text-gray-postmark-dark">
+                          Please contact us immediately if you didn't request this change.
+                        </p>
+                        <p class="mt-6 text-base leading-6 text-gray-postmark-dark">
+                          {{ site_name }}
+                        </p>
+                        <table class="w-full mt-12 mb-4">
+                          <tr>
+                            <td class="attributes_content bg-gray-postmark-lightest p-4">
+                              <table class="w-full">
+                                <tr>
+                                  <td class="pb-2 text-base">
+                                    <strong class="text-gray-postmark-darker">Profile details</strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-base">
+                                    <strong class="text-gray-postmark-darker">Username:</strong>
+                                    <p class="text-gray-postmark-dark inline">{{ username }}</p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-base">
+                                    <strong class="text-gray-postmark-darker">First name:</strong>
+                                    <p class="text-gray-postmark-dark inline">{{ first_name }}</p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-base">
+                                    <strong class="text-gray-postmark-darker">Last name:</strong>
+                                    <p class="text-gray-postmark-dark inline">{{ last_name }}</p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="text-base">
+                                    <strong class="text-gray-postmark-darker">Email:</strong>
+                                    <p class="text-gray-postmark-dark inline">{{ email }}</p>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <component src="src/emails/components/footer.html"></component>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>

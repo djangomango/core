@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load heroicons %}
+
+{% block site %}
+  <main class="min-h-screen">
+    <div class="flex min-h-screen flex-col items-center justify-center px-6 py-8">
+      <div class="mx-auto max-w-screen-sm text-center">
+        {% heroicon_solid 'wrench-screwdriver' class='mx-auto mb-4 w-10 h-10 text-gray-400' %}
+        <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-primary-700 lg:mb-6 md:text-5xl xl:text-6xl">Under Maintenance</h1>
+        <p class="font-light text-gray-500 md:text-lg xl:text-xl">We are currently performing some scheduled maintenance, please come back soon.</p>
+      </div>
+    </div>
+  </main>
+{% endblock site %}

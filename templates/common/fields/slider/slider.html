@@ -1,0 +1,13 @@
+<input
+    id="{{ field.auto_id }}"
+    name="{{ field.html_name }}"
+    type="range"
+    value="{{ field.value|default_if_none:0 }}"
+    class="styled-slider range h-2 w-full cursor-pointer rounded-lg appearance-none bg-gray-200 {{ extra_inputstyles }}"
+    {% include 'common/fields/attrs.html' %}/>
+{% if left_label or right_label %}
+  <div class="mt-2 flex w-full justify-between">
+    <span class="text-xs text-gray-600">{{ left_label|default_if_none:'' }}</span>
+    <span class="text-right text-xs text-gray-600">{{ right_label|default_if_none:'' }}</span>
+  </div>
+{% endif %}

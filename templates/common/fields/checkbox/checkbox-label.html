@@ -1,0 +1,12 @@
+<div class="flex items-start">
+  <div class="flex h-5 mr-2 items-center">
+    <input
+        id="{{ field.auto_id }}"
+        name="{{ field.html_name }}"
+        type="checkbox"
+        {% if field.value %}checked{% endif %}
+        class="{% if field.field.disabled or field.field.widget.attrs.disabled or field.field.widget.attrs.readonly %}cursor-not-allowed{% endif %} focus:ring-3 focus:ring-primary-600 text-primary-600 h-4 w-4 rounded border border-gray-300 bg-gray-50 {{ extra_inputstyles }}"
+        {% include 'common/fields/attrs.html' %}/>
+  </div>
+  {% include 'common/fields/label.html' %}
+</div>

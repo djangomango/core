@@ -1,0 +1,18 @@
+{% load all_spaceless %}
+
+<button type="{{ type|default:'button' }}" {% if id %}id="{{ id }}"{% endif %} {% if name %}name="{{ name }}"{% endif %} {% if value %}value="{{ value }}"{% endif %} {% if form_submit %}form="{{ form_submit }}"{% endif %} {% if modal_toggle %}data-modal-toggle="{{ modal_toggle }}"{% endif %}
+    {% all_spaceless %}
+      class="rounded-lg text-white text-center focus:outline-none focus:ring-2 focus:ring-offset-2
+    {% if color == 'primary' %}
+      bg-primary-700 hover:bg-primary-600 focus:ring-primary-500
+    {% elif color == 'gray' %}
+      bg-gray-600 hover:bg-gray-500 focus:ring-gray-400
+    {% elif color == 'red' %}
+      bg-red-700 hover:bg-red-600 focus:ring-red-500
+    {% else %}
+      bg-blue-700 hover:bg-blue-600 focus:ring-blue-500
+    {% endif %}
+    {{ extra_class|default:'' }}"
+    {% end_all_spaceless %}>
+  {{ label|default:'' }}
+</button>

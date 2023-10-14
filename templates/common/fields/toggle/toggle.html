@@ -1,0 +1,13 @@
+<label
+    for="{{ field.auto_id }}"
+    class="relative inline-flex items-center mr-5 cursor-pointer">
+  <input
+      id="{{ field.auto_id }}"
+      name="{{ field.html_name }}"
+      type="checkbox"
+      {% if field.value %}checked{% endif %}
+      class="{% if field.field.disabled or field.field.widget.attrs.disabled or field.field.widget.attrs.readonly %}cursor-not-allowed{% endif %} sr-only peer {{ extra_inputstyles }}"
+      {% include 'common/fields/attrs.html' %} />
+  <div class="peer-focus:ring-primary-500 peer-checked:bg-primary-500 peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-0.5 after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-2 peer-focus:ring-offset-2 {{ extra_labelstyles }}"></div>
+  <span class="ml-3 text-sm font-medium">{{ field.label }}</span>
+</label>

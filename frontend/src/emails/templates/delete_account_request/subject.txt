@@ -1,0 +1,1 @@
+DjangoMango - Delete account request

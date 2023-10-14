@@ -1,0 +1,8 @@
+Hello, {{ first_name }}!
+
+Just wanted to confirm that you have successfully created a new {{ site_name }} account.
+
+Thank you for your interest and support.
+
+
+{{ site_name }}
